@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=480,initial-scale=1.0" />
+<title>ダメージカウンター＋サイコロ</title>
+<style>
+  html { font-size:12px; }
+  @media screen and ( min-width : 370px ) { html{ font-size:16px; } }
+  @media screen and ( min-width : 400px ) { html{ font-size:18px; } }
+  @media screen and ( min-width : 768px ) { html{ font-size:22px; } }
+  * { margin:0; padding:0; font-weight:normal; font-family:sans-serif; color:#002b36; border:0; text-align:center; -webkit-appearance:none; }
+  body { background-color:#fdf6e3; margin:0.6em auto; width:98%; font-size:1em; }
+  h1 { font-size:1em; }
+  h2 { margin:0.3em 0; font-size:1em; }
+  table { margin:auto; width:95%; font-size:1em; }
+  .me  { background-color:#268bd2; color:#fdf6e3; }
+  .you { background-color:#dc322f; color:#fdf6e3; }
+  span { font-size:1.4em; color:#fdf6e3; }
+  input { margin:0.2em; padding:0.3em 0; width:1.8em; font-size:1.1em; border-radius:0.2em; background-color:#002b36; color:#fdf6e3; }
+  #dice input { margin:0.2em auto 0.6em; width:95%; border-radius:0.3em; }
+  #dice span { padding:0.2em 0.8em; border:0.1em solid #002b36; }
+  #dice p { margin:0.6em auto; width:auto; }
+</style>
+<script type="text/javascript">
+  var LifeCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var DiceNum = 0;
+  var OneCount = 0;
+
+  window.onload = function () {
+    document.char.decrease0.onclick = function () { LifeCount[0]--; document.getElementById("life0").innerHTML = LifeCount[0]; }
+    document.char.increase0.onclick = function () { LifeCount[0]++; document.getElementById("life0").innerHTML = LifeCount[0]; }
+    document.char.decrease1.onclick = function () { LifeCount[1]--; document.getElementById("life1").innerHTML = LifeCount[1]; }
+    document.char.increase1.onclick = function () { LifeCount[1]++; document.getElementById("life1").innerHTML = LifeCount[1]; }
+    document.char.decrease2.onclick = function () { LifeCount[2]--; document.getElementById("life2").innerHTML = LifeCount[2]; }
+    document.char.increase2.onclick = function () { LifeCount[2]++; document.getElementById("life2").innerHTML = LifeCount[2]; }
+    document.char.decrease3.onclick = function () { LifeCount[3]--; document.getElementById("life3").innerHTML = LifeCount[3]; }
+    document.char.increase3.onclick = function () { LifeCount[3]++; document.getElementById("life3").innerHTML = LifeCount[3]; }
+    document.char.decrease4.onclick = function () { LifeCount[4]--; document.getElementById("life4").innerHTML = LifeCount[4]; }
+    document.char.increase4.onclick = function () { LifeCount[4]++; document.getElementById("life4").innerHTML = LifeCount[4]; }
+    document.char.decrease5.onclick = function () { LifeCount[5]--; document.getElementById("life5").innerHTML = LifeCount[5]; }
+    document.char.increase5.onclick = function () { LifeCount[5]++; document.getElementById("life5").innerHTML = LifeCount[5]; }
+    document.char.decrease6.onclick = function () { LifeCount[6]--; document.getElementById("life6").innerHTML = LifeCount[6]; }
+    document.char.increase6.onclick = function () { LifeCount[6]++; document.getElementById("life6").innerHTML = LifeCount[6]; }
+    document.char.decrease7.onclick = function () { LifeCount[7]--; document.getElementById("life7").innerHTML = LifeCount[7]; }
+    document.char.increase7.onclick = function () { LifeCount[7]++; document.getElementById("life7").innerHTML = LifeCount[7]; }
+    document.char.decrease8.onclick = function () { LifeCount[8]--; document.getElementById("life8").innerHTML = LifeCount[8]; }
+    document.char.increase8.onclick = function () { LifeCount[8]++; document.getElementById("life8").innerHTML = LifeCount[8]; }
+    document.char.decrease9.onclick = function () { LifeCount[9]--; document.getElementById("life9").innerHTML = LifeCount[9]; }
+    document.char.increase9.onclick = function () { LifeCount[9]++; document.getElementById("life9").innerHTML = LifeCount[9]; }
+    document.char.decrease10.onclick = function () { LifeCount[10]--; document.getElementById("life10").innerHTML = LifeCount[10]; }
+    document.char.increase10.onclick = function () { LifeCount[10]++; document.getElementById("life10").innerHTML = LifeCount[10]; }
+    document.char.decrease11.onclick = function () { LifeCount[11]--; document.getElementById("life11").innerHTML = LifeCount[11]; }
+    document.char.increase11.onclick = function () { LifeCount[11]++; document.getElementById("life11").innerHTML = LifeCount[11]; }
+    document.char.decrease12.onclick = function () { LifeCount[12]--; document.getElementById("life12").innerHTML = LifeCount[12]; }
+    document.char.increase12.onclick = function () { LifeCount[12]++; document.getElementById("life12").innerHTML = LifeCount[12]; }
+    document.char.decrease13.onclick = function () { LifeCount[13]--; document.getElementById("life13").innerHTML = LifeCount[13]; }
+    document.char.increase13.onclick = function () { LifeCount[13]++; document.getElementById("life13").innerHTML = LifeCount[13]; }
+    document.char.decrease14.onclick = function () { LifeCount[14]--; document.getElementById("life14").innerHTML = LifeCount[14]; }
+    document.char.increase14.onclick = function () { LifeCount[14]++; document.getElementById("life14").innerHTML = LifeCount[14]; }
+    document.char.decrease15.onclick = function () { LifeCount[15]--; document.getElementById("life15").innerHTML = LifeCount[15]; }
+    document.char.increase15.onclick = function () { LifeCount[15]++; document.getElementById("life15").innerHTML = LifeCount[15]; }
+    document.char.decrease16.onclick = function () { LifeCount[16]--; document.getElementById("life16").innerHTML = LifeCount[16]; }
+    document.char.increase16.onclick = function () { LifeCount[16]++; document.getElementById("life16").innerHTML = LifeCount[16]; }
+    document.char.decrease17.onclick = function () { LifeCount[17]--; document.getElementById("life17").innerHTML = LifeCount[17]; }
+    document.char.increase17.onclick = function () { LifeCount[17]++; document.getElementById("life17").innerHTML = LifeCount[17]; }
+    document.char.decrease18.onclick = function () { LifeCount[18]--; document.getElementById("life18").innerHTML = LifeCount[18]; }
+    document.char.increase18.onclick = function () { LifeCount[18]++; document.getElementById("life18").innerHTML = LifeCount[18]; }
+    document.char.decrease19.onclick = function () { LifeCount[19]--; document.getElementById("life19").innerHTML = LifeCount[19]; }
+    document.char.increase19.onclick = function () { LifeCount[19]++; document.getElementById("life19").innerHTML = LifeCount[19]; }
+
+    document.dice.diceroll.onclick = function () {
+      for ( j = 0; j < 10; j++ ) {
+        DiceNum = Math.floor(Math.random() * 6) + 1;
+        document.getElementById("dice" + j).innerHTML = DiceNum
+        if ( DiceNum == 1 ) {
+          document.getElementById("dice" + j).style.color = "#dc322f";
+          OneCount++;
+          document.getElementById("dice_one_" + j).innerHTML = OneCount;
+          document.getElementById("dice_one_" + j).style.color = "#002b36";
+        } else {
+          document.getElementById("dice" + j).style.color = "#002b36";
+          document.getElementById("dice_one_" + j).innerHTML = OneCount;
+          document.getElementById("dice_one_" + j).style.color = "#002b36";
+        }
+      }
+      OneCount = 0;
+    }
+  };
+</script>
+</head>
+<body>
+
+  <h1>デストロイゼムオール!!!<h1>
+  <h2>ダメージカウンター</h2>
+
+  <form name="char">
+    <table>
+      <tr>
+      <th /><th class="me">1P</th><th class="you">2P</th>
+      </tr>
+      <tr>
+        <th>"狙撃"</th>
+        <td class="me"><input type="button" value="−" name="decrease0" /> <span id="life0">0</span> <input type="button" value="＋" name="increase0" /></td>
+        <td class="you"><input type="button" value="−" name="decrease10" /> <span id="life10">0</span> <input type="button" value="＋" name="increase10" /></td>
+      </tr>
+      <tr>
+        <th>"鉄拳"</th>
+        <td class="me"><input type="button" value="−" name="decrease1" /> <span id="life1">0</span> <input type="button" value="＋" name="increase1" /></td>
+        <td class="you"><input type="button" value="−" name="decrease11" /> <span id="life11">0</span> <input type="button" value="＋" name="increase11" /></td>
+      </tr>
+      <tr>
+        <th>"妖精"</th>
+        <td class="me"><input type="button" value="−" name="decrease2" /> <span id="life2">0</span> <input type="button" value="＋" name="increase2" /></td>
+        <td class="you"><input type="button" value="−" name="decrease12" /> <span id="life12">0</span> <input type="button" value="＋" name="increase12" /></td>
+      </tr>
+      <tr>
+        <th>"豪腕"</th>
+        <td class="me"><input type="button" value="−" name="decrease3" /> <span id="life3">0</span> <input type="button" value="＋" name="increase3" /></td>
+        <td class="you"><input type="button" value="−" name="decrease13" /> <span id="life13">0</span> <input type="button" value="＋" name="increase13" /></td>
+      </tr>
+      <tr>
+        <th>"魔術"</th>
+        <td class="me"><input type="button" value="−" name="decrease4" /> <span id="life4">0</span> <input type="button" value="＋" name="increase4" /></td>
+        <td class="you"><input type="button" value="−" name="decrease14" /> <span id="life14">0</span> <input type="button" value="＋" name="increase14" /></td>
+      </tr>
+      <tr>
+        <th>"無能"</th>
+        <td class="me"><input type="button" value="−" name="decrease5" /> <span id="life5">0</span> <input type="button" value="＋" name="increase5" /></td>
+        <td class="you"><input type="button" value="−" name="decrease15" /> <span id="life15">0</span> <input type="button" value="＋" name="increase15" /></td>
+      </tr>
+      <tr>
+        <th>"光刃"</th>
+        <td class="me"><input type="button" value="−" name="decrease6" /> <span id="life6">0</span> <input type="button" value="＋" name="increase6" /></td>
+        <td class="you"><input type="button" value="−" name="decrease16" /> <span id="life16">0</span> <input type="button" value="＋" name="increase16" /></td>
+      </tr>
+      <tr>
+        <th>"魔人"</th>
+        <td class="me"><input type="button" value="−" name="decrease7" /> <span id="life7">0</span> <input type="button" value="＋" name="increase7" /></td>
+        <td class="you"><input type="button" value="−" name="decrease17" /> <span id="life17">0</span> <input type="button" value="＋" name="increase17" /></td>
+      </tr>
+      <tr>
+        <th>"無双"</th>
+        <td class="me"><input type="button" value="−" name="decrease8" /> <span id="life8">0</span> <input type="button" value="＋" name="increase8" /></td>
+        <td class="you"><input type="button" value="−" name="decrease18" /> <span id="life18">0</span> <input type="button" value="＋" name="increase18" /></td>
+      </tr>
+      <tr>
+        <th>"歌姫"</th>
+        <td class="me"><input type="button" value="−" name="decrease9" /> <span id="life9">0</span> <input type="button" value="＋" name="increase9" /></td>
+        <td class="you"><input type="button" value="−" name="decrease19" /> <span id="life19">0</span> <input type="button" value="＋" name="increase19" /></td>
+      </tr>
+    </table>
+  </form>
+
+  <h2>サイコロ (一の目の数:<span id="dice_one_0">0</span>/<span id="dice_one_1">0</span>/<span id="dice_one_2">0</span>/<span id="dice_one_3">0</span>/<span id="dice_one_4">0</span>/<span id="dice_one_5">0</span>/<span id="dice_one_6">0</span>/<span id="dice_one_7">0</span>/<span id="dice_one_8">0</span>/<span id="dice_one_9">0</span>)</h2>
+  <form name="dice" id="dice">
+    <input type="button" value="ダイスロール" name="diceroll" />
+    <p><span id="dice0">1</span>
+    <span id="dice1">1</span>
+    <span id="dice2">1</span>
+    <span id="dice3">1</span>
+    <span id="dice4">1</span></p>
+    <p><span id="dice5">1</span>
+    <span id="dice6">1</span>
+    <span id="dice7">1</span>
+    <span id="dice8">1</span>
+    <span id="dice9">1</span></p>
+  </form>
+
+</body>
+</html>
